@@ -12,21 +12,23 @@ pipeline {
       }
       stage('Deploy') {
          steps {
-            sh "echo Deploying to ${params.ENVIRONMENT}" 
+            sh "echo Deploying to ${params.ENVIRONMENT}"
+         }
+      }
       stage('Approve') {
          steps {
           input message: 'Deploy to production?'
         }
       }
     }
-  }
-   post {
+    post {
       success {
-         echo 'pipeline succeded'
+          echo 'pipeline succeded'
       }
       failure {
         echo 'pipeline failed'
       }
    }
-  }    
+}
+      
   
