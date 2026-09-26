@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
      stage ('Build') {
-         steps {echo 'building')
+         steps {echo 'building'}
      }
      stage ('Test') {
         parallel {
