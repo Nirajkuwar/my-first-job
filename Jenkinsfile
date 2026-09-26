@@ -1,21 +1,27 @@
 pipeline {
   agent any
+  environment {
+    APP_ENV = 'Test'
+  }
   stages {
-     stage ('Build') {
-         steps {echo 'building'}
+    stage('checkout') {
+      steps {
+        sh 'echo Building'
       }
-      stage ('Test') {
-         parallel {
-              stage('unit') {steps {sh 'echo unit tests' }}
-              stage('Integreation') { steps { sh 'echo Integration tests' }}
-         }
+    }
+    stage('test') {
+      steps {
+        sh ''echo Running tests'
       }
-      stage ('approve') {
-        steps {
-           input message: 'Deploy to production?'
-        }
-      }
-   }       
-}
-  
-    
+    }
+  }
+  post {
+     success {
+       echo 'All stages passed'
+     }
+    failure {
+      echo 'something failed'
+    }
+  } 
+}  
+        
