@@ -10,11 +10,12 @@ pipeline {
               stage('Integreation') { steps { sh 'echo Integration tests' }}
 
       stage ('approve') {
-        steps{
+        steps {
            input message: 'Deploy to production?'
         }
       }
     }
   }       
-}    
+} 
+  
     
