@@ -13,6 +13,9 @@ pipeline {
     stage('Deploy') {
       steps {
         sh "echo Deploying to ${params.ENVIRONMENT}" 
+    stage('Approve') {
+      steps {
+        input message: 'Deploy to production?'
       }
     }
   }
