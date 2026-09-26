@@ -8,7 +8,7 @@ pipeline {
         sh 'pwd'
         sh 'ls -la'
         sh 'ls -lh'
-        sh 'whoami
+        sh 'whoami'
       }
     }
   }
