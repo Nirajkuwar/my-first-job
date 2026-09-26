@@ -1,16 +1,19 @@
 pipeline {
-    agent any
-    parameters {
-        choice(name: 'ENIRONMENT', choices: ['staging', 'production'], description: 'Target')
+  agent any
+  parameters{
+    choice( name: 'ENVIRONMENT' , choices: ['staging', 'production'], description: 'Target')
+  }
+  stages {
+    stage ('Test') {
+      parallel {
+        stage('Unit') { steps { sh 'echo Unit Testing'}}
+        stage('Integration') { steps { sh 'echo Integration Testing'}}
+      }
     }
-    stages {
-        stage('deploy') {
-            steps{
-                sh "echo Deploying to ${ params.ENVIRONMENT }"
-            }
-         }
-     }
+    stage('Deploy') {
+      steps {
+        sh "echo Deploying to ${params.ENVIRONMENT}" 
+      }
+    }
+  }
 }
-    
-    
-        
