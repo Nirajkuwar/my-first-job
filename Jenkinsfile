@@ -15,8 +15,7 @@ pipeline {
            input message: 'Deploy to production?'
         }
       }
-    
-  }       
+   }       
 }
   
     
