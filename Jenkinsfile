@@ -8,16 +8,25 @@ pipeline {
       parallel {
         stage('Unit') { steps { sh 'echo Unit Testing'}}
         stage('Integration') { steps { sh 'echo Integration Testing'}}
+        }
       }
-    }
-    stage('Deploy') {
-      steps {
-        sh "echo Deploying to ${params.ENVIRONMENT}" 
-    stage('Approve') {
-      steps {
-        input message: 'Deploy to production?'
+      stage('Deploy') {
+         steps {
+            sh "echo Deploying to ${params.ENVIRONMENT}" 
+      stage('Approve') {
+         steps {
+          input message: 'Deploy to production?'
+        }
       }
     }
   }
- }
+   post {
+      success {
+         echo 'pipeline succeded'
+      }
+      failure {
+        echo 'pipeline failed'
+      }
+   }
+  }    
   
