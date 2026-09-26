@@ -4,6 +4,9 @@ pipeline {
     stage("hello") {
       steps {
          echo 'Hello, jenkins!'
+        sh 'echo this runs a real shell command'
+        sh 'pwd'
+        sh 'ls -la'
       }
     }
   }
