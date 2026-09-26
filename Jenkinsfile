@@ -27,7 +27,7 @@ pipeline {
       }
       stage ('Deploy') { 
         steps { 
-          sh "echo deploying to $"{params.ENVIROMENT} " 
+          sh "echo deploying to ${params.ENVIROMENT} " 
         }
       }
     }
